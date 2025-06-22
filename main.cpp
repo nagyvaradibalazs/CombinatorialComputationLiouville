@@ -3,16 +3,23 @@
 #include <chrono>
 #include <fstream>
 #include <string>
+#include <iostream>
 
 int main()
 {
-    int64_t x = 1000000000;
+    ComputationLiouville::CombinatorialLiouville combinatorial_liouville;
+
+    int64_t x;
+
+    std::cout << "To compute L(x), please specify x: ";
+
+    std::cin >> x;
 
     std::chrono::steady_clock::time_point start, end;
 
     start = std::chrono::high_resolution_clock::now();
 
-    int64_t result = compute_L(x);
+    int64_t result = combinatorial_liouville.compute_L(x);
 
     end = std::chrono::high_resolution_clock::now();
 
