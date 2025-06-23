@@ -1,37 +1,54 @@
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          https://www.boost.org/LICENSE_1_0.txt)
+
 #include "summatory_liouville.h"
 
 #include <chrono>
 #include <fstream>
-#include <string>
 #include <iostream>
+#include <string>
+#include <iomanip>
 
 int main()
 {
     ComputationLiouville::CombinatorialLiouville combinatorial_liouville;
 
-    int64_t x;
+    int base, initial_power, max_power;
 
-    std::cout << "To compute L(x), please specify x: ";
+    std::cout << "Base: ";
+    std::cin >> base;
 
-    std::cin >> x;
+    std::cout << "Initial power: ";
+    std::cin >> initial_power;
 
-    std::chrono::steady_clock::time_point start, end;
+    std::cout << "Max power: ";
+    std::cin >> max_power;
 
-    start = std::chrono::high_resolution_clock::now();
-
-    int64_t result = combinatorial_liouville.compute_L(x);
-
-    end = std::chrono::high_resolution_clock::now();
-
-    double duration = (double)std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-
-    std::ofstream outfile("output_" + std::to_string(x) + ".txt");
-
-    if (outfile.is_open())
+    for (int i = initial_power; i <= max_power; i++)
     {
-        outfile << "Computing L(" << x << "):" << std::endl
-                << "L(" << x << ") = " << result << std::endl
-                << "Computation took " << duration << " time.";
+        int64_t x = std::pow(base, i);
+
+        std::ofstream outfile("result_" + std::to_string(base) + "_" + std::to_string(i) + ".txt");
+
+        if (!outfile.is_open())
+        {
+            std::cerr << "Failed to open output file.\n";
+            return 1;
+        }
+
+        std::chrono::steady_clock::time_point start = std::chrono::high_resolution_clock::now();
+
+        int64_t result = combinatorial_liouville.compute_L(x);
+
+        std::chrono::steady_clock::time_point end = std::chrono::high_resolution_clock::now();
+
+        double duration = static_cast<double>(std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()) / 1000000;
+
+        outfile << "L(" << x << ") = " << result << " | Time: " << std::fixed << std::setprecision(6) << duration << "s\n";
+
+        std::cout << base << "^" << i << " done" << std::endl;
+
         outfile.close();
     }
 
