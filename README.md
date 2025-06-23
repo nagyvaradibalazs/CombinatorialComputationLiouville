@@ -1,6 +1,6 @@
 # Combinatorial Computational Liouville
 
-Compute values of $$L(x)=\sum_{n \leq x} \lambda(n),$$ where $\lambda(n)$ is the liouville function $\lambda(n)=(-1)^\Omega(n)$. It uses an eleentary combinatorial algorithm based on a method by [Helfgott & Thompson (2023)](https://link.springer.com/article/10.1007/s40993-022-00408-8). Several parts of this code reuses implementation by [CompPsi by Joel Ganesh](https://github.com/JoelGanesh/CompPsi/tree/master).
+Compute values of $$L(x)=\sum_{n \leq x} \lambda(n),$$ where $\lambda(n)$ is the liouville function $\lambda(n)=(-1)^\Omega(n)$. It uses an elementary combinatorial algorithm based on a method by [Helfgott & Thompson (2023)](https://link.springer.com/article/10.1007/s40993-022-00408-8). Several parts of this code a by reusing the implementation of [CompPsi by Joel Ganesh](https://github.com/JoelGanesh/CompPsi/tree/master).
 
 ## Dependencies
 
