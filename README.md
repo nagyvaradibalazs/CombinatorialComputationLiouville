@@ -7,7 +7,7 @@ Compute values of $$L(x)=\sum_{n \leq x} \lambda(n),$$ where $\lambda(n)$ is the
 The latest version of [Boost](https://www.boost.org/users/download/).
 ## Usage
 
-Run main.exe. Give parameters ```Base```, ```Initial Power```, and ```Max Power```, to produce results of $L(x)$ where $x=```Base```^```Power```$ for $```Initial Power``` \leq ```Power``` \leq ```Max Power```$. The results are in the created output files, highlighting the time needed for the computation.
+Run main.exe. Give parameters ```Base```, ```Initial Power```, and ```Max Power```, to produce results of $L(x)$ where ```x```=```Base```^```Power``` for $```Initial Power``` \leq ```Power``` \leq ```Max Power```$. The results are in the created output files, highlighting the time needed for the computation.
 
 ## License
 
